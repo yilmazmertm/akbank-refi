@@ -68,18 +68,12 @@ export default function Navbar() {
             <span>Üretilmiş Ürünler</span>
           </div>
           <div
-            id="collapseUtilities"
-            className="collapse"
-            aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar"
+            className="nav-link collapsed"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/produceproduct")}
           >
-            <div className="bg-white py-2 collapse-inner rounded">
-              <h6 className="collapse-header">Custom Utilities:</h6>
-              <div className="collapse-item">Colors</div>
-              <div className="collapse-item">Borders</div>
-              <div className="collapse-item">Animations</div>
-              <div className="collapse-item">Other</div>
-            </div>
+            <i className="fas fa-fw fa-wrench"></i>
+            <span>Ürün Üret</span>
           </div>
         </li>
 
@@ -89,40 +83,35 @@ export default function Navbar() {
             <i className="fas fa-fw fa-wrench"></i>
             <span>Çalışanlar</span>
           </div>
-          <div
-            id="collapsePages"
-            className="collapse"
-            aria-labelledby="headingPages"
-            data-parent="#accordionSidebar"
-          >
-            <div className="bg-white py-2 collapse-inner rounded">
-              <h6 className="collapse-header">Login Screens:</h6>
-              <div className="collapse-item">Login</div>
-              <div className="collapse-item">Register</div>
-              <div className="collapse-item">Forgot Password</div>
-              <div className="collapse-divider"></div>
-              <h6 className="collapse-header">Other Pages:</h6>
-              <div className="collapse-item">404 Page</div>
-              <div className="collapse-item">Blank Page</div>
-            </div>
-          </div>
         </li>
 
         <li className="nav-item">
-          <div className="nav-link" style={{ cursor: "pointer" }}>
+          <div
+            className="nav-link"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/companyınfo")}
+          >
             <i className="fas fa-fw fa-chart-area"></i>
             <span>Firma Bilgileri</span>
           </div>
         </li>
 
         <li className="nav-item">
-          <div className="nav-link" style={{ cursor: "pointer" }}>
+          <div
+            className="nav-link"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/invoicepage")}
+          >
             <i className="fas fa-fw fa-table"></i>
             <span>Gelen Fatura</span>
           </div>
         </li>
         <li className="nav-item">
-          <div className="nav-link" style={{ cursor: "pointer" }}>
+          <div
+            className="nav-link"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/outinvoicepage")}
+          >
             <i className="fas fa-fw fa-table"></i>
             <span>Giden Fatura</span>
           </div>

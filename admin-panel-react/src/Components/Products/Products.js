@@ -3,7 +3,7 @@ import React from "react";
 export default function Products() {
   return (
     <div>
-      <div className="card shadow mb-4" id="products">
+      <div className="card shadow mb-4" id="stok">
         <div className="card-header py-3">
           <h6 className="m-0 font-weight-bold text-primary">
             DataTables Example
@@ -20,57 +20,83 @@ export default function Products() {
               <thead>
                 <tr>
                   <th>Ürün Kodu</th>
-                  <th>KAİ</th>
+                  <th>Üretilmiş Adet</th>
+                  <th>Ortalama KAİ</th>
+                  <th>Toplam KAİ</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>NK - 001</td>
-                  <td>20</td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>50</td>
                 </tr>
                 <tr>
                   <td>NK - 001</td>
-                  <td>20</td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>50</td>
                 </tr>
                 <tr>
                   <td>NK - 001</td>
-                  <td>20</td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>50</td>
                 </tr>
                 <tr>
                   <td>NK - 001</td>
-                  <td>20</td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>50</td>
                 </tr>
                 <tr>
                   <td>NK - 001</td>
-                  <td>20</td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>50</td>
                 </tr>
                 <tr>
                   <td>NK - 001</td>
-                  <td>20</td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>50</td>
                 </tr>
                 <tr>
                   <td>NK - 001</td>
-                  <td>20</td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>50</td>
                 </tr>
                 <tr>
                   <td>NK - 001</td>
-                  <td>20</td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>50</td>
                 </tr>
                 <tr>
                   <td>NK - 001</td>
-                  <td>20</td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>50</td>
                 </tr>
                 <tr>
                   <td>NK - 001</td>
-                  <td>20</td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>50</td>
                 </tr>
                 <tr>
                   <td>NK - 001</td>
-                  <td>20</td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>50</td>
                 </tr>
                 <tr>
                   <td>NK - 001</td>
-                  <td>20</td>
+                  <td>5</td>
+                  <td>10</td>
+                  <td>50</td>
                 </tr>
               </tbody>
             </table>
