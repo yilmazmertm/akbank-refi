@@ -10,6 +10,7 @@ import CompanyInfoPage from "./Page/CompanyInfoPage/CompanyInfoPage";
 import OutInvoicePage from "./Page/OutInvoicePage/OutInvoicePage";
 import CustomerAddPage from "./Page/CustomerAddPage/CustomerAddPage";
 import ProduceProductPage from "./Page/ProduceProductPage/ProduceProductPage";
+import Query from "./Page/Query/Query";
 function App() {
   return (
     <div className="App" id="wrapper">
@@ -24,6 +25,7 @@ function App() {
           <Route path="/outinvoicepage" element={<OutInvoicePage />} />
           <Route path="/customeraddpage" element={<CustomerAddPage />} />
           <Route path="/produceproduct" element={<ProduceProductPage />} />
+          <Route path="/query" element={<Query />} />
         </Routes>
       </Router>
     </div>
