@@ -1,9 +1,7 @@
-from wsgiref.util import FileWrapper
-
 from rest_framework.response import Response
 
 ERROR_MESSAGES = {
-
+    1: "Search Failed"
 }
 
 

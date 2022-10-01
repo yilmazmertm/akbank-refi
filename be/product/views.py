@@ -4,7 +4,7 @@ from rest_framework.permissions import AllowAny
 
 from be import settings
 from be.exception import is_request_valid
-from be.responses import response_400, response_200
+from be.responses import response_400, response_200, response_500
 from employee.models import Employee
 from product.models import StockProduct, ProducedProduct
 from product.serializers import StockProductSerializer, ProducedProductSerializer
@@ -46,8 +46,8 @@ def create_product(request):
         return response_400(data=str(e))
 
     try:
-        employee_one_instance = Employee.objects.get(id=employee_one_id)
-        employee_two_instance = Employee.objects.get(id=employee_two_id)
+        employee_one_instance = Employee.objects.all()[0]
+        employee_two_instance = Employee.objects.all()[1]
     except Exception as e:
         return response_400(data=str(e))
     with transaction.atomic():
@@ -98,3 +98,25 @@ def list_produced_products(request):
     qs = ProducedProduct.objects.all()
     serializer = ProducedProductSerializer(instance=qs, many=True)
     return response_200(data=serializer.data)
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def serve_product(request):
+    should_contain_key_values = ["code"]
+    if not is_request_valid(request.data, should_contain_key_values):
+        return response_400()
+    code = request.data['code']
+    try:
+        produced_product = ProducedProduct.objects.get(code=code)
+    except Exception as e:
+        return response_500(error_code=1)
+
+    return_obj = {
+        "link": "https://testnet.snowtrace.io/tx/" + produced_product.tx_hash,
+        "producedProduct": ProducedProductSerializer(instance=produced_product, many=False).data,
+        "stockProductOne": StockProductSerializer(instance=produced_product.used_resource_one, many=False).data,
+        "stockProductTwo": StockProductSerializer(instance=produced_product.used_resource_two, many=False).data
+    }
+
+    return response_200(return_obj)

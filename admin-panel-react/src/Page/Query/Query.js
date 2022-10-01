@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+
+const api = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
 
 export default function Query() {
+  const [code, setCode] = useState("");
+  const [success, setSuccess] = useState(false)
+  const [isMessageShow, setIsMessageShow] = useState(false)
+  const [responseInfo, setResponseInfo] = useState([])
+  const [producedProduct, setProducedProduct] = useState([])
+  const [stockProductOne, setStockProductOne] = useState([])
+  const [stockProductTwo, setStockProductTwo] = useState([])
+
+  const onCodeSubmit = () => {
+    api.post("product/serve-product", {
+      code: code
+    }).then((response) => {
+      setIsMessageShow(true)
+      setResponseInfo(response.data.data)
+      setProducedProduct(response.data.data.producedProduct)
+      setStockProductOne(response.data.data.stockProductOne)
+      setStockProductTwo(response.data.data.stockProductTwo)
+      setSuccess(true)
+    }).catch((e) => {
+      setIsMessageShow(true)
+      console.error(e)
+      setSuccess(false)
+    })
+  }
+
   return (
     <div>
       <div
-        class="card mt-5 "
+        className="card mt-5 "
         style={{
           width: "500px",
           height: "450px",
@@ -12,47 +40,53 @@ export default function Query() {
           color: " #4e73df",
         }}
       >
-        <div class="card-header bg-primary text-white">
+        <div className="card-header bg-primary text-white">
           Blockchain Kaydını sorgula
         </div>
-        <div class="card-body mt-2">Lütfen aşağıya Ürün Kodunu giriniz.</div>
+        <div className="card-body mt-2">Lütfen aşağıya Ürün Kodunu giriniz.</div>
         <div className="col" style={{ marginBottom: "120px" }}>
           <div style={{ marginLeft: "60px" }}>
             <label htmlFor="exampleFormControlInput1">Kod</label>
             <input
-              class="form-control w-75"
+              className="form-control w-75"
               id="exampleFormControlInput1"
               placeholder="Kod"
+              onChange={(e) => setCode(e.target.value)}
             />
           </div>
           <div
             className="d-flex flex-row-reverse mt-3"
             style={{ marginRight: "105px" }}
           >
-            <button className="btn btn-success w-25" type="button">
+            <button className="btn btn-success w-25" type="button" onClick={onCodeSubmit}>
               Sorgula
             </button>
           </div>
-          <div className="alert alert-success mt-5" role="alert">
-            Karbon takibi Blockchainde var şimdi görüntüle
-          </div>
-          <div className="alert alert-danger" role="alert">
+          {isMessageShow && (success ? (<div className="alert alert-success mt-5" role="alert">
+            Karbon takibi verifike edilebilir ! <a href={responseInfo.link}>Buraya tıkla !</a> 
+          </div>) : (<div className="alert alert-danger" role="alert">
             Karbon takibi blockchainde yok!
-          </div>
+          </div>))}
         </div>
       </div>
-      <div className="row mt-5" style={{marginLeft: "170px"}}>
+      <div className="row mt-5" style={{ marginLeft: "170px" }}>
         <div className="card">
-          <div className="card-header">Basic Card Example</div>
-          <div className="card-body">This is an example of a basic card.</div>
+          <div className="card-header">Ürün Bilgileri</div>
+          <div className="card-body">Kod : {stockProductTwo.code}</div>
+          <div className="card-body">İsim : {stockProductTwo.name}</div>
+          <div className="card-body">Miktar : {stockProductTwo.amount}</div>
         </div>
         <div className="card mx-4">
-          <div className="card-header">Basic Card Example</div>
-          <div className="card-body">This is an example of a basic card.</div>
+          <div className="card-header">Ürün Bilgileri</div>
+          <div className="card-body">Kod : {stockProductOne.code}</div>
+          <div className="card-body">İsim : {stockProductOne.name}</div>
+          <div className="card-body">Miktar : {stockProductOne.amount}</div>
         </div>
         <div className="card">
-          <div className="card-header">Basic Card Example</div>
-          <div className="card-body">This is an example of a basic card.</div>
+          <div className="card-header">Üretilen Ürün Bilgileri</div>
+          <div className="card-body">Kod : {producedProduct.code}</div>
+          <div className="card-body">İsim : {producedProduct.name}</div>
+          <div className="card-body">Miktar : {producedProduct.amount}</div>
         </div>
       </div>
     </div>
