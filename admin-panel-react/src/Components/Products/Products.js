@@ -1,6 +1,23 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
+const api = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
 
 export default function Products() {
+  const [producedProducts, setProducedProducts] = useState([]);
+
+  useEffect(() => {
+    api
+      .get(
+        "product/list-produced-products",
+      )
+      .then((response) => {
+        setProducedProducts(response.data.data)
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }, [])
+
   return (
     <div>
       <div className="card shadow mb-4" id="stok">
@@ -15,7 +32,7 @@ export default function Products() {
               className="table table-bordered"
               id="dataTable"
               width="100%"
-              cellspacing="0"
+              cellSpacing="0"
             >
               <thead>
                 <tr>
@@ -26,78 +43,12 @@ export default function Products() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>NK - 001</td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>50</td>
-                </tr>
-                <tr>
-                  <td>NK - 001</td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>50</td>
-                </tr>
-                <tr>
-                  <td>NK - 001</td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>50</td>
-                </tr>
-                <tr>
-                  <td>NK - 001</td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>50</td>
-                </tr>
-                <tr>
-                  <td>NK - 001</td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>50</td>
-                </tr>
-                <tr>
-                  <td>NK - 001</td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>50</td>
-                </tr>
-                <tr>
-                  <td>NK - 001</td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>50</td>
-                </tr>
-                <tr>
-                  <td>NK - 001</td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>50</td>
-                </tr>
-                <tr>
-                  <td>NK - 001</td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>50</td>
-                </tr>
-                <tr>
-                  <td>NK - 001</td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>50</td>
-                </tr>
-                <tr>
-                  <td>NK - 001</td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>50</td>
-                </tr>
-                <tr>
-                  <td>NK - 001</td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>50</td>
-                </tr>
+                {producedProducts.map((item, i) => (<tr key={i}>
+                  <td>{item.code}</td>
+                  <td>{item.name}</td>
+                  <td>{item.amount}</td>
+                  <td>{item.product_kai_by_amount}</td>
+                </tr>)) }
               </tbody>
             </table>
           </div>

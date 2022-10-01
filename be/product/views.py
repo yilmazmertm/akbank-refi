@@ -5,6 +5,7 @@ from be.exception import is_request_valid
 from be.responses import response_400, response_200
 from employee.models import Employee
 from product.models import StockProduct, ProducedProduct
+from product.serializers import StockProductSerializer, ProducedProductSerializer
 
 
 @api_view(['POST'])
@@ -60,3 +61,19 @@ def create_product(request):
     )
 
     return response_200()
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def list_stock_products(request):
+    qs = StockProduct.objects.all()
+    serializer = StockProductSerializer(instance=qs, many=True)
+    return response_200(data=serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def list_produced_products(request):
+    qs = ProducedProduct.objects.all()
+    serializer = ProducedProductSerializer(instance=qs, many=True)
+    return response_200(data=serializer.data)
