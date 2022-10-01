@@ -10,7 +10,7 @@ from customer.serializer import CustomerSerializer
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def create_customer(request):
-    should_contain_key_values = ["customerName", 'customerKais']
+    should_contain_key_values = ["customerName"]
     if not is_request_valid(request.data, should_contain_key_values):
         return response_400()
 
