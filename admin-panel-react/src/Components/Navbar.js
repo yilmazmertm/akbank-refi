@@ -85,7 +85,7 @@ export default function Navbar() {
             onClick={() => navigate("/companyınfo")}
           >
             <i className="fas fa-fw fa-chart-area"></i>
-            <span>Firma Bilgileri</span>
+            <span>Müşteri Ekle</span>
           </div>
         </li>
 
