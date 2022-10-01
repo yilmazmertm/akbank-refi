@@ -25,7 +25,7 @@ export default function Navbar() {
           <div
             className="nav-link"
             style={{ cursor: "pointer" }}
-            onClick={navigate("/")}
+            onClick={() => navigate("/ahmet")}
           >
             <i className="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
@@ -35,7 +35,11 @@ export default function Navbar() {
         <hr className="sidebar-divider" />
 
         <li className="nav-item">
-          <div className="nav-link collapsed" style={{ cursor: "pointer" }}>
+          <div
+            className="nav-link collapsed"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/stockpage")}
+          >
             <i className="fas fa-fw fa-cog"></i>
             <span>Stok Ürün</span>
           </div>
@@ -55,7 +59,11 @@ export default function Navbar() {
         </li>
 
         <li className="nav-item">
-          <div className="nav-link collapsed" style={{ cursor: "pointer" }}>
+          <div
+            className="nav-link collapsed"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/productspage")}
+          >
             <i className="fas fa-fw fa-wrench"></i>
             <span>Üretilmiş Ürünler</span>
           </div>
