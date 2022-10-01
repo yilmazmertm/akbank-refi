@@ -20,7 +20,7 @@ class ProducedProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProducedProduct
-        fields = ('code', 'name', 'amount', 'product_kai_by_amount')
+        fields = ('id', 'code', 'name', 'amount', 'product_kai_by_amount')
 
     @staticmethod
     def get_product_kai_by_amount(obj):
