@@ -10,4 +10,4 @@ class IncomingInvoiceAdmin(admin.ModelAdmin):
 
 @admin.register(OutgoingInvoice)
 class OutgoingInvoiceAdmin(admin.ModelAdmin):
-    list_display = ('customer', 'product', 'invoice_date', 'amount', 'product_kai_by_amount', 'created_at')
+    list_display = ('customer', 'product', 'invoice_date', 'amount', 'created_at')

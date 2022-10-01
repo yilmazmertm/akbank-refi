@@ -10,4 +10,4 @@ class StockProductAdmin(admin.ModelAdmin):
 
 @admin.register(ProducedProduct)
 class ProducedProductAdmin(admin.ModelAdmin):
-    list_display = ('code', 'name', 'amount', 'product_kai_by_amount', 'created_at')
+    list_display = ('code', 'name', 'amount', 'created_at')

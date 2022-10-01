@@ -19,6 +19,5 @@ class OutgoingInvoice(models.Model):
     product = models.ForeignKey(ProducedProduct, on_delete=models.CASCADE)
     invoice_date = models.DateTimeField(blank=False, null=False)
     amount = models.PositiveIntegerField(blank=False, null=False, default=1)
-    product_kai_by_amount = models.PositiveIntegerField(blank=False, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
