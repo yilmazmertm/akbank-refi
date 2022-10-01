@@ -31,5 +31,7 @@ class ProducedProduct(models.Model):
     used_employee_one_amount = models.PositiveIntegerField(blank=False, null=False)
     used_employee_two = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='used_human_two_id')
     used_employee_two_amount = models.PositiveIntegerField(blank=False, null=False)
+    metadata_hash = models.CharField(max_length=64, blank=False, null=False)
+    tx_hash = models.CharField(max_length=66, blank=False, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
