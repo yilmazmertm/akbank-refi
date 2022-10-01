@@ -63,7 +63,6 @@ def create_product(request):
             used_employee_one_amount=employee_one_amount,
             used_employee_two_amount=employee_two_amount
         )
-        produced_product = ProducedProduct.objects.all().first()
         metadata_hash = create_metadata_return_hash(produced_product)
         produced_product.metadata_hash = metadata_hash
         produced_product.save()
