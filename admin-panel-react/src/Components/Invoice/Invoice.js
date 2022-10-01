@@ -1,9 +1,13 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
 export default function Invoice() {
-  const navigate = useNavigate();
   const [date, setDate] = useState();
+  const [piece, setPiece] = useState(0);
+  const [kai, setKai] = useState(0);
+  const [totalKai, setTotalKai] = useState(0);
+  useEffect(() => {
+    setTotalKai(kai * piece);
+  });
   console.log(date);
   return (
     <form>
@@ -12,24 +16,20 @@ export default function Invoice() {
       </div>
       <div className="col">
         <div class="mb-3 mt-3">
-          <label for="exampleFormControlInput1">Müşteri</label>
+          <label htmlFor="exampleFormControlInput1">Müşteri</label>
           <select class="form-control" id="exampleFormControlSelect1">
             <option>Teknosa</option>
             <option>AkBank</option>
             <option>Lojistik A.Ş</option>
           </select>
-          <div className="d-flex">
-            <button
-              className="btn btn-success"
-              type="button"
-              onClick={navigate("/customeradd")}
-            >
-              Success
+          <div className="d-flex flex-row-reverse mt-4">
+            <button className="btn btn-success w-25" type="button">
+             Müşteri Ekle
             </button>
           </div>
         </div>
         <div class="mb-3 mt-4">
-          <label for="exampleFormControlInput1">Ürün Adı</label>
+          <label htmlFor="exampleFormControlInput1">Ürün Adı</label>
           <input
             class="form-control"
             id="exampleFormControlInput1"
@@ -38,7 +38,7 @@ export default function Invoice() {
         </div>
 
         <div class="mb-3 mt-4">
-          <label for="exampleFormControlInput1">Fatura Tarihi</label>
+          <label htmlFor="exampleFormControlInput1">Fatura Tarihi</label>
           <input
             type="datetime-local"
             class="form-control"
@@ -48,24 +48,26 @@ export default function Invoice() {
           />
         </div>
         <div class="mb-3 mt-4">
-          <label for="exampleFormControlInput1">Ürün Adeti</label>
+          <label htmlFor="exampleFormControlInput1">Ürün Adeti</label>
           <input
             class="form-control"
             id="exampleFormControlInput1"
             placeholder="Ürün Adeti"
+            onChange={(e) => setPiece(e.target.value)}
           />
         </div>
         <div class="mb-3 mt-4">
-          <label for="exampleFormControlInput1">Ürün Adet KAİ</label>
+          <label htmlFor="exampleFormControlInput1">Ürün Adet KAİ</label>
           <input
             class="form-control"
             id="exampleFormControlInput1"
             placeholder="Ürün Adet KAİ"
+            onChange={(e) => setKai(e.target.value)}
           />
         </div>
 
         <div className="row">
-          <div className="col-md-5">Toplam KAİ : 12</div>
+          <div className="col-md-5">Toplam KAİ : {totalKai}</div>
           <div className="col-md-5 mt-5">
             <hr
               className=""

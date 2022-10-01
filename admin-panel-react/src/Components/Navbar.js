@@ -79,13 +79,6 @@ export default function Navbar() {
 
         <hr className="sidebar-divider" />
         <li className="nav-item">
-          <div className="nav-link collapsed" style={{ cursor: "pointer" }}>
-            <i className="fas fa-fw fa-wrench"></i>
-            <span>Çalışanlar</span>
-          </div>
-        </li>
-
-        <li className="nav-item">
           <div
             className="nav-link"
             style={{ cursor: "pointer" }}
