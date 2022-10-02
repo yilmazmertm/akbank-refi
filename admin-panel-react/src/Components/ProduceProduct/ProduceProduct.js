@@ -114,9 +114,12 @@ export default function ProduceProduct() {
           <div className="input-group mb-3 mt-4">
             <div className="input-group-prepend">
               <label htmlFor="exampleFormControlInput1">
-                Çalışan İşçi Kaynağı
+                Emisyon Etkenleri
               </label>
               <select className="form-control" id="exampleFormControlSelect1">
+                <option defaultValue={true}>Lütfen Seçiniz</option>
+                <option>Elektrik Tüketimi</option>
+              <option>Ulaşım yakıt tüketimi</option>
                 <option>Yazılım Departmanı</option>
                 <option>Halkla İlişkiler</option>
                 <option>Ağır İşçilik</option>
@@ -133,9 +136,12 @@ export default function ProduceProduct() {
             <div className="input-group mb-3">
               <div className="input-group-prepend">
                 <label htmlFor="exampleFormControlInput1">
-                  Çalışan İşçi Kaynağı
+                  Emisyon Etkenleri
                 </label>
                 <select className="form-control" id="exampleFormControlSelect1">
+                <option defaultValue={true}>Lütfen Seçiniz</option>
+                <option>Elektrik Tüketimi</option>
+                <option>Ulaşım yakıt tüketimi</option>
                   <option>Yazılım Departmanı</option>
                   <option>Halkla İlişkiler</option>
                   <option>Ağır İşçilik</option>
