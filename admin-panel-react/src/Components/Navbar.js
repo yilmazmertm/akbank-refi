@@ -88,6 +88,16 @@ export default function Navbar() {
             <span>Müşteri Ekle</span>
           </div>
         </li>
+        <li className="nav-item">
+          <div
+            className="nav-link"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/query")}
+          >
+            <i className="fas fa-fw fa-chart-area"></i>
+            <span>Sorgula</span>
+          </div>
+        </li>
 
         <li className="nav-item">
           <div

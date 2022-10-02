@@ -4,22 +4,19 @@ import { useNavigate } from "react-router-dom";
 
 const api = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
 
-
 export default function OutInvoice() {
   const navigate = useNavigate();
 
   const [invoiceDate, setInvoiceDate] = useState();
   const [customerList, setCustomerList] = useState([]);
-  const [productList, setProductList] = useState([])
+  const [productList, setProductList] = useState([]);
   const [customerId, setCustomerId] = useState(0);
-  const [productId, setProductId] = useState(0)
-  const [amount, setAmount] = useState(0)
+  const [productId, setProductId] = useState(0);
+  const [amount, setAmount] = useState(0);
 
   useEffect(() => {
     api
-      .get(
-        "customer/list",
-      )
+      .get("customer/list")
       .then((response) => {
         setCustomerList(response.data.data);
       })
@@ -27,28 +24,30 @@ export default function OutInvoice() {
         console.error(e);
       });
     api
-      .get(
-        "product/list-produced-products",
-      )
+      .get("product/list-produced-products")
       .then((response) => {
         setProductList(response.data.data);
       })
       .catch((e) => {
         console.error(e);
       });
-  }, [])
+  }, []);
 
   const onSubmitButtonAction = () => {
-    api.post("invoice/create-outgoing", {
-      customerId: customerId,
-      productId: productId,
-      invoiceDate: invoiceDate,
-      amount: amount
-    })
+    api
+      .post("invoice/create-outgoing", {
+        customerId: customerId,
+        productId: productId,
+        invoiceDate: invoiceDate,
+        amount: amount,
+      })
+      .then(() => {
+        navigate("/stockpage");
+      })
       .catch((e) => {
         console.error(e);
       });
-  }
+  };
 
   return (
     <form>
@@ -58,21 +57,41 @@ export default function OutInvoice() {
       <div className="col">
         <div className="mb-3 mt-3">
           <label htmlFor="exampleFormControlInput1">Müşteri</label>
-          <select className="form-control" id="exampleFormControlSelect1" onChange={(e) => setCustomerId(e.target.value)}>
+          <select
+            className="form-control"
+            id="exampleFormControlSelect1"
+            onChange={(e) => setCustomerId(e.target.value)}
+          >
             <option defaultValue={true}>Lütfen Seçiniz</option>
-            {customerList.map((item, key) => <option value={item.id} key={key}>{item.name}</option>)}
+            {customerList.map((item, key) => (
+              <option value={item.id} key={key}>
+                {item.name}
+              </option>
+            ))}
           </select>
           <div className="d-flex flex-row-reverse mt-4">
-            <button className="btn btn-success w-25" type="button" onClick={() => navigate("/companyinfo")}>
+            <button
+              className="btn btn-success w-25"
+              type="button"
+              onClick={() => navigate("/companyinfo")}
+            >
               Müşteri Ekle
             </button>
           </div>
         </div>
         <div className="mb-3 mt-3">
           <label htmlFor="exampleFormControlInput1">Ürün Seçimi</label>
-          <select className="form-control" id="exampleFormControlSelect1" onChange={(e) => setProductId(e.target.value)}>
+          <select
+            className="form-control"
+            id="exampleFormControlSelect1"
+            onChange={(e) => setProductId(e.target.value)}
+          >
             <option defaultValue={true}>Lütfen Seçiniz</option>
-            {productList.map((item, key) => <option value={item.id} key={key}>{item.code} {item.name}</option>)}
+            {productList.map((item, key) => (
+              <option value={item.id} key={key}>
+                {item.code} {item.name}
+              </option>
+            ))}
           </select>
         </div>
         <div className="col">
@@ -96,7 +115,11 @@ export default function OutInvoice() {
             />
           </div>
           <div className="d-flex">
-            <button className="btn btn-success w-25" type="button" onClick={onSubmitButtonAction}>
+            <button
+              className="btn btn-success w-25"
+              type="button"
+              onClick={onSubmitButtonAction}
+            >
               Üret
             </button>
           </div>

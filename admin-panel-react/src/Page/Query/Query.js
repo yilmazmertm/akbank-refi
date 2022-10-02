@@ -30,7 +30,7 @@ export default function Query() {
   }
 
   return (
-    <div>
+    <div className="col">
       <div
         className="card mt-5 "
         style={{
@@ -70,22 +70,22 @@ export default function Query() {
         </div>
       </div>
       {isMessageShow &&
-        <div className="row mt-5" style={{ marginLeft: "170px" }}>
-          <div className="card">
+        <div className="row mt-5" style={{ marginLeft: "160px" }}>
+          <div className="card" style={{width: "250px",height:"210px"}}>
             <div className="card-header">Ürün Bilgileri</div>
             <div className="card-body">Kod : {stockProductTwo.code}</div>
             <div className="card-body">İsim : {stockProductTwo.name}</div>
             <div className="card-body">Miktar : {responseInfo.stockProductTwoNumber} </div>
             <div className="card-body">Ortalama KAİ : {stockProductTwo.product_kai_by_amount}</div>
           </div>
-          <div className="card mx-4">
+          <div className="card mx-4" style={{width: "250px",height:"210px"}}>
             <div className="card-header">Ürün Bilgileri</div>
             <div className="card-body">Kod : {stockProductOne.code}</div>
             <div className="card-body">İsim : {stockProductOne.name}</div>
             <div className="card-body">Miktar : {responseInfo.stockProductOneNumber} </div>
             <div className="card-body">Ortalama KAİ : {stockProductOne.product_kai_by_amount}</div>
           </div>
-          <div className="card">
+          <div className="card" style={{width: "250px",height:"210px"}}>
             <div className="card-header">Üretilen Ürün Bilgileri</div>
             <div className="card-body">Kod : {producedProduct.code}</div>
             <div className="card-body">İsim : {producedProduct.name}</div>

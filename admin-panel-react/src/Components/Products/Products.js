@@ -37,7 +37,7 @@ export default function Products() {
               <thead>
                 <tr>
                   <th>Ürün Kodu</th>
-                  <th>Üretilmiş Adet</th>
+                  <th>Ürün ismi</th>
                   <th>Ortalama KAİ</th>
                   <th>Toplam KAİ</th>
                 </tr>

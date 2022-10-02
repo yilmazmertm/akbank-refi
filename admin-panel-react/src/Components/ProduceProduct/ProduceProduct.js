@@ -8,7 +8,7 @@ export default function ProduceProduct() {
   let navigate = useNavigate();
 
   const [stockItems, setStockItems] = useState([]);
-  const [productName, setProductName] = useState("")
+  const [productName, setProductName] = useState("");
   const [stockItemOne, setStockItemOne] = useState(0);
   const [stockItemTwo, setStockItemTwo] = useState(0);
   const [stockItemOneAmount, setStockItemOneAmount] = useState(0);
@@ -19,17 +19,14 @@ export default function ProduceProduct() {
 
   useEffect(() => {
     api
-      .get(
-        "product/list-stock-products",
-      )
+      .get("product/list-stock-products")
       .then((response) => {
-        setStockItems(response.data.data)
+        setStockItems(response.data.data);
       })
       .catch((e) => {
         console.error(e);
       });
-  }, [])
-
+  }, []);
 
   const onProduceSubmit = () => {
     api.post("product/create", {
@@ -49,23 +46,31 @@ export default function ProduceProduct() {
   }
 
   return (
-    <div>
-      <div className="col">
+    <div className="col mt-5">
+      <div className="col ">
         <div className="input-group mb-3">
-        <div className="input-group mb-3">
+          <div className="input-group mb-3">
             <label htmlFor="exampleFormControlInput1">Ürün İsmi</label>
             <input
-            type="text"
-            className="form-control"
-            aria-label="Text input with dropdown button"
-            onChange={(e) => setProductName(e.target.value)}
-          />
+              type="text"
+              className="form-control mx-3"
+              aria-label="Text input with dropdown button"
+              onChange={(e) => setProductName(e.target.value)}
+            />
           </div>
           <div className="input-group-prepend">
             <label htmlFor="exampleFormControlInput1">Kullanılan kaynak</label>
-            <select className="form-control" id="exampleFormControlSelect1" onChange={(e) => setStockItemOne(e.target.value)}>
+            <select
+              className="form-control"
+              id="exampleFormControlSelect1"
+              onChange={(e) => setStockItemOne(e.target.value)}
+            >
               <option defaultValue={true}>Lütfen Seçiniz</option>
-              {stockItems.map((item, index) => <option value={item.id} key={index}>{item.name}</option>)}
+              {stockItems.map((item, index) => (
+                <option value={item.id} key={index}>
+                  {item.name}
+                </option>
+              ))}
             </select>
           </div>
           <input
@@ -78,9 +83,17 @@ export default function ProduceProduct() {
         <div className="input-group mb-3">
           <div className="input-group-prepend">
             <label htmlFor="exampleFormControlInput1">Kullanılan kaynak</label>
-            <select className="form-control" id="exampleFormControlSelect1" onChange={(e) => setStockItemTwo(e.target.value)}>
+            <select
+              className="form-control"
+              id="exampleFormControlSelect1"
+              onChange={(e) => setStockItemTwo(e.target.value)}
+            >
               <option defaultValue={true}>Lütfen Seçiniz</option>
-              {stockItems.map((item, index) => <option value={item.id} key={index}>{item.name}</option>)}
+              {stockItems.map((item, index) => (
+                <option value={item.id} key={index}>
+                  {item.name}
+                </option>
+              ))}
             </select>
           </div>
           <input
@@ -98,9 +111,11 @@ export default function ProduceProduct() {
       </div>
       <div className="col">
         <div className="col">
-          <div className="input-group mb-3">
+          <div className="input-group mb-3 mt-4">
             <div className="input-group-prepend">
-              <label htmlFor="exampleFormControlInput1">Çalışan İşçi Kaynağı</label>
+              <label htmlFor="exampleFormControlInput1">
+                Çalışan İşçi Kaynağı
+              </label>
               <select className="form-control" id="exampleFormControlSelect1">
                 <option>Yazılım Departmanı</option>
                 <option>Halkla İlişkiler</option>
@@ -150,7 +165,11 @@ export default function ProduceProduct() {
           />
         </div>
         <div className="d-flex">
-          <button className="btn btn-success w-50" type="button" onClick={onProduceSubmit}>
+          <button
+            className="btn btn-success w-50"
+            type="button"
+            onClick={onProduceSubmit}
+          >
             Üret
           </button>
         </div>

@@ -21,16 +21,14 @@ export default function Invoice() {
 
   useEffect(() => {
     api
-      .get(
-        "customer/list",
-      )
+      .get("customer/list")
       .then((response) => {
-        setCustomerList(response.data.data)
+        setCustomerList(response.data.data);
       })
       .catch((e) => {
         console.error(e);
       });
-  }, [])
+  }, []);
 
   const onSubmitClick = () => {
     api.post("invoice/create-incoming", {
@@ -52,9 +50,17 @@ export default function Invoice() {
       <div className="col">
         <div className="mb-3 mt-3">
           <label htmlFor="exampleFormControlInput1">Müşteri</label>
-          <select className="form-control" id="exampleFormControlSelect1" onChange={(e) => setCustomerId(e.target.value)}>
+          <select
+            className="form-control"
+            id="exampleFormControlSelect1"
+            onChange={(e) => setCustomerId(e.target.value)}
+          >
             <option defaultValue={true}>Lütfen Seçiniz</option>
-            {customerList.map((item, key)  => <option value={item.id} key={key}>{item.name}</option>)}
+            {customerList.map((item, key) => (
+              <option value={item.id} key={key}>
+                {item.name}
+              </option>
+            ))}
           </select>
           <div className="d-flex flex-row-reverse mt-4">
             <button className="btn btn-success w-25" type="button" onClick={() => navigate("/companyinfo")}>
@@ -111,10 +117,14 @@ export default function Invoice() {
           </div>
         </div>
         <div className="d-flex flex-row-reverse mt-4">
-            <button className="btn btn-success w-25" type="button" onClick={onSubmitClick}>
-              Gönder
-            </button>
-          </div>
+          <button
+            className="btn btn-success w-25"
+            type="button"
+            onClick={onSubmitClick}
+          >
+            Gönder
+          </button>
+        </div>
       </div>
     </form>
   );
