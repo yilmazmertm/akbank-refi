@@ -25,10 +25,10 @@ export default function Navbar() {
           <div
             className="nav-link"
             style={{ cursor: "pointer" }}
-            onClick={() => navigate("/ahmet")}
+            onClick={() => navigate("/")}
           >
             <i className="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+            <span>Anasayfa</span>
           </div>
         </li>
 

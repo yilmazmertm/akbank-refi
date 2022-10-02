@@ -8,6 +8,7 @@ from be.responses import response_400, response_200, response_500
 from employee.models import Employee
 from product.models import StockProduct, ProducedProduct
 from product.serializers import StockProductSerializer, ProducedProductSerializer
+from utils.calculators import calculate_for_one_product
 from utils.connect_w3 import connect_w3_instance
 from utils.metadata_helpers import create_metadata_return_hash
 
@@ -122,3 +123,67 @@ def serve_product(request):
     }
 
     return response_200(return_obj)
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def create_graph(request):
+    x = {
+        1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0,
+        10: 0, 11: 0, 12: 0,
+    }
+    products = ProducedProduct.objects.all()
+    for product in products:
+        month_id = product.created_at.month
+        x[month_id] += calculate_for_one_product(product)
+
+    y = []
+    y.append({
+        "name": "Ocak",
+        "uv": x[1]
+    })
+    y.append({
+        "name": "Şubat",
+        "uv": x[2]
+    })
+    y.append({
+        "name": "Mart",
+        "uv": x[3]
+    })
+    y.append({
+        "name": "Nisan",
+        "uv": x[4]
+    })
+    y.append({
+        "name": "Mayıs",
+        "uv": x[5]
+    })
+    y.append({
+        "name": "Haziran",
+        "uv": x[6]
+    })
+    y.append({
+        "name": "Temmuz",
+        "uv": x[7]
+    })
+    y.append({
+        "name": "Ağustos",
+        "uv": x[8]
+    })
+    y.append({
+        "name": "Eylül",
+        "uv": x[9]
+    })
+    y.append({
+        "name": "Ekim",
+        "uv": x[10]
+    })
+    y.append({
+        "name": "Kasım",
+        "uv": x[11]
+    })
+    y.append({
+        "name": "Aralık",
+        "uv": x[12]
+    })
+    return response_200(data=y)

@@ -44,7 +44,7 @@ export default function ProduceProduct() {
       employeeTwoAmount: employeeAmountTwo,
       producedProductAmount: totalNumber
     }).then(() => {
-      navigate("productspage")
+      navigate("/productspage")
     })
   }
 
