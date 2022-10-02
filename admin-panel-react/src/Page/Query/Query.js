@@ -63,32 +63,36 @@ export default function Query() {
             </button>
           </div>
           {isMessageShow && (success ? (<div className="alert alert-success mt-5" role="alert">
-            Karbon takibi verifike edilebilir ! <a href={responseInfo.link}>Buraya tıkla !</a> 
+            Karbon takibi verifike edilebilir ! <a href={responseInfo.link}>Buraya tıkla !</a>
           </div>) : (<div className="alert alert-danger" role="alert">
             Karbon takibi blockchainde yok!
           </div>))}
         </div>
       </div>
-      <div className="row mt-5" style={{ marginLeft: "170px" }}>
-        <div className="card">
-          <div className="card-header">Ürün Bilgileri</div>
-          <div className="card-body">Kod : {stockProductTwo.code}</div>
-          <div className="card-body">İsim : {stockProductTwo.name}</div>
-          <div className="card-body">Miktar : {stockProductTwo.amount}</div>
+      {isMessageShow &&
+        <div className="row mt-5" style={{ marginLeft: "170px" }}>
+          <div className="card">
+            <div className="card-header">Ürün Bilgileri</div>
+            <div className="card-body">Kod : {stockProductTwo.code}</div>
+            <div className="card-body">İsim : {stockProductTwo.name}</div>
+            <div className="card-body">Miktar : {responseInfo.stockProductTwoNumber} </div>
+            <div className="card-body">Ortalama KAİ : {stockProductTwo.product_kai_by_amount}</div>
+          </div>
+          <div className="card mx-4">
+            <div className="card-header">Ürün Bilgileri</div>
+            <div className="card-body">Kod : {stockProductOne.code}</div>
+            <div className="card-body">İsim : {stockProductOne.name}</div>
+            <div className="card-body">Miktar : {responseInfo.stockProductOneNumber} </div>
+            <div className="card-body">Ortalama KAİ : {stockProductOne.product_kai_by_amount}</div>
+          </div>
+          <div className="card">
+            <div className="card-header">Üretilen Ürün Bilgileri</div>
+            <div className="card-body">Kod : {producedProduct.code}</div>
+            <div className="card-body">İsim : {producedProduct.name}</div>
+            <div className="card-body">Ortalama KAİ : {producedProduct.product_kai_by_amount}</div>
+          </div>
         </div>
-        <div className="card mx-4">
-          <div className="card-header">Ürün Bilgileri</div>
-          <div className="card-body">Kod : {stockProductOne.code}</div>
-          <div className="card-body">İsim : {stockProductOne.name}</div>
-          <div className="card-body">Miktar : {stockProductOne.amount}</div>
-        </div>
-        <div className="card">
-          <div className="card-header">Üretilen Ürün Bilgileri</div>
-          <div className="card-body">Kod : {producedProduct.code}</div>
-          <div className="card-body">İsim : {producedProduct.name}</div>
-          <div className="card-body">Miktar : {producedProduct.amount}</div>
-        </div>
-      </div>
+      }
     </div>
   );
 }

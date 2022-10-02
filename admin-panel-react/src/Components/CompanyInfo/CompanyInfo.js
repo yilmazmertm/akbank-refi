@@ -30,7 +30,7 @@ export default function CompanyInfo() {
           </h6>
         </div>
         <div class="mb-3 mt-3">
-          <label for="exampleFormControlInput1" className="mx-3">
+          <label htmlFor="exampleFormControlInput1" className="mx-3">
             Müşteri
           </label>
           <div className="col">

@@ -82,7 +82,7 @@ export default function Navbar() {
           <div
             className="nav-link"
             style={{ cursor: "pointer" }}
-            onClick={() => navigate("/companyınfo")}
+            onClick={() => navigate("/companyinfo")}
           >
             <i className="fas fa-fw fa-chart-area"></i>
             <span>Müşteri Ekle</span>

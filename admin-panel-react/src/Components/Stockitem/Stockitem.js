@@ -13,6 +13,7 @@ export default function Stockitem() {
       )
       .then((response) => {
         setStockItems(response.data.data)
+        console.log(response.data.data)
       })
       .catch((e) => {
         console.error(e);
@@ -22,11 +23,6 @@ export default function Stockitem() {
   return (
     <div>
       <div className="card shadow mb-4" id="stok">
-        <div className="card-header py-3">
-          <h6 className="m-0 font-weight-bold text-primary">
-            DataTables Example
-          </h6>
-        </div>
         <div className="card-body">
           <div className="table-responsive">
             <table
@@ -49,9 +45,9 @@ export default function Stockitem() {
                   <tr key={i}>
                   <td>{item.code}</td>
                   <td>{item.name}</td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td>50</td>
+                  <td>{item.amount}</td>
+                  <td>{item.product_kai_by_amount}</td>
+                  <td>{item.product_kai_sum}</td>
                 </tr>
                 )
                 )}

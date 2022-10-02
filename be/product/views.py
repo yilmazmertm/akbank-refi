@@ -116,6 +116,8 @@ def serve_product(request):
         "link": "https://testnet.snowtrace.io/tx/" + produced_product.tx_hash,
         "producedProduct": ProducedProductSerializer(instance=produced_product, many=False).data,
         "stockProductOne": StockProductSerializer(instance=produced_product.used_resource_one, many=False).data,
+        "stockProductOneNumber": produced_product.used_resource_one_amount,
+        "stockProductTwoNumber": produced_product.used_resource_two_amount,
         "stockProductTwo": StockProductSerializer(instance=produced_product.used_resource_two, many=False).data
     }
 

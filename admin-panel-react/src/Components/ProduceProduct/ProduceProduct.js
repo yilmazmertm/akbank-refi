@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const api = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
 
 export default function ProduceProduct() {
+  let navigate = useNavigate();
+
   const [stockItems, setStockItems] = useState([]);
   const [productName, setProductName] = useState("")
   const [stockItemOne, setStockItemOne] = useState(0);
@@ -40,6 +43,8 @@ export default function ProduceProduct() {
       employeeOneAmount: employeeAmountOne,
       employeeTwoAmount: employeeAmountTwo,
       producedProductAmount: totalNumber
+    }).then(() => {
+      navigate("productspage")
     })
   }
 

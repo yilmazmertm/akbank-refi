@@ -50,6 +50,7 @@ def create_incoming(request):
         IncomingInvoice.objects.create(
             customer=customer,
             product=stock_product,
+            amount=amount,
             product_kai_by_amount=product_kai_for_amount,
             invoice_date=invoice_date
         )

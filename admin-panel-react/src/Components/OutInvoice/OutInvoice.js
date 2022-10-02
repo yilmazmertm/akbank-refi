@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const api = axios.create({ baseURL: process.env.REACT_APP_SERVER_URL });
 
 
 export default function OutInvoice() {
+  const navigate = useNavigate();
+
   const [invoiceDate, setInvoiceDate] = useState();
   const [customerList, setCustomerList] = useState([]);
   const [productList, setProductList] = useState([])
@@ -60,7 +63,7 @@ export default function OutInvoice() {
             {customerList.map((item, key) => <option value={item.id} key={key}>{item.name}</option>)}
           </select>
           <div className="d-flex flex-row-reverse mt-4">
-            <button className="btn btn-success w-25" type="button">
+            <button className="btn btn-success w-25" type="button" onClick={() => navigate("/companyinfo")}>
               Müşteri Ekle
             </button>
           </div>
